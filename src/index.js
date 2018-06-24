@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
-import {BrowserRouter,Route,Switch} from 'react-router-dom';
+import {HashRouter ,Route,Switch} from 'react-router-dom';
 import store from './store';
 import { Home, Login, Register, ResetPass } from './containers';
-
+// HashRouter github page才能正常访问
 ReactDOM.render(
     <Provider store={store}>
-        <BrowserRouter>
+        <HashRouter >
             <div>
                 <Switch>
                     <Route path="/home" component={Home} />
@@ -17,7 +17,7 @@ ReactDOM.render(
                     <Route component={Home}/>
                 </Switch>
             </div>   
-        </BrowserRouter>
+        </HashRouter >
     </Provider>, 
     document.getElementById('root')
 );
