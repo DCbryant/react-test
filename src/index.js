@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
 import {BrowserRouter,Route,Switch} from 'react-router-dom';
 import store from './store';
-import { Home, Login, Register } from './containers';
+import { Home, Login, Register, ResetPass } from './containers';
 
 ReactDOM.render(
     <Provider store={store}>
@@ -13,6 +13,7 @@ ReactDOM.render(
                     <Route path="/home" component={Home} />
                     <Route path="/login" component={Login} />
                     <Route path="/register" component={Register} />
+                    <Route path="/resetPass" component={ResetPass} />
                     <Route component={Home}/>
                 </Switch>
             </div>   

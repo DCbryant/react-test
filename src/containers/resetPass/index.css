@@ -18,11 +18,11 @@ body{
     left: 0;
     right: 0;
     margin: auto;
-    height: 280px;
+    height: 200px;
     width: 328px;
     background-color: #fff;
     padding: 30px;
-    padding-top: 50px;
+    padding-top: 60px;
     border-radius: 5px;
 }
 
@@ -38,7 +38,6 @@ body{
 
 .wrapper input[type="button"]{
     background-color: #f20d0d;
-    color: #fff;
 }
 
 
@@ -47,21 +46,3 @@ body{
     border-radius: 20px;
 }   
 
-
-.textArea{
-    margin-top: -10px;
-    display: block;
-    text-align: right;
-    cursor: pointer;
-    text-decoration: underline;
-}
-
-.textArea:active{
-    color:red;
-}
-
-.serverError{
-    color: red;
-    font-size: 12px;
-    margin-top: 10px;
-}
