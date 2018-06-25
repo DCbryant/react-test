@@ -12,12 +12,10 @@ class Login extends React.Component{
     state = {
         user:'',
         pwd:'',
-        errorMsg:''
+        errorMsg:'',
+        showServerError:false
     }
 
-    componentDidMount (){
-        console.log(this.props)
-    }
 
     handleChange = (key,val) => {
         this.setState({
@@ -26,17 +24,10 @@ class Login extends React.Component{
     }
 
     showError = (msg) => {
-        // 优先处理401错误
-        console.log('401')
-        if(!!this.props.msg){
-            this.setState({
-                errorMsg: this.props.msg
-            })
-        }else{
-            this.setState({
-                errorMsg: msg
-            })
-        }
+        //处理正则错误
+        this.setState({
+            errorMsg: msg
+        })
         setTimeout(() => {
             this.setState({
                 errorMsg: ''
@@ -63,8 +54,20 @@ class Login extends React.Component{
         this.props.history.push('/resetPass')
     }
 
+    componentWillReceiveProps(nextProps){
+        //处理后端返回错误
+        this.setState({
+            showServerError:true
+        })
+        setTimeout(() => {
+            this.setState({
+                showServerError:false
+            })
+        }, 2000);
+    }
+
     render() {
-        console.log(this.props)
+
         return (
             <div className="mask">
                 <div className="wrapper">
@@ -97,6 +100,7 @@ class Login extends React.Component{
                         <div onClick={this.handleClickForgetPass}>忘记密码</div>
                         <div onClick={this.handleClickRegister}>去注册</div>
                     </div>
+                    <div className="serverError">{this.state.showServerError ? this.props.msg : ''}</div>
                 </div>
             </div>
         )

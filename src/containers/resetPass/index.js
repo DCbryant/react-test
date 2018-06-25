@@ -12,9 +12,7 @@ class ResetPass extends React.Component{
         pwd:''
     }
 
-    componentDidMount (){
-        console.log(this.props)
-    }
+    
 
     handleChange = (key,val) => {
         this.setState({

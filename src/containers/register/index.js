@@ -17,9 +17,7 @@ class Register extends React.Component{
         showServerError:false
     }
 
-    componentDidMount (){
-        console.log(this.props)
-    }
+
 
     handleChange = (key,val) => {
         this.setState({
@@ -57,7 +55,6 @@ class Register extends React.Component{
     }
 
     componentWillReceiveProps(nextProps){
-        console.log('快更新啊')
         this.setState({
             showServerError:true
         })
@@ -69,7 +66,6 @@ class Register extends React.Component{
     }
 
     render() {
-        console.log(this.props.msg)
         return (
             <div className="mask">
                 <div className="wrapper">
