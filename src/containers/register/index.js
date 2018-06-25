@@ -14,7 +14,7 @@ class Register extends React.Component{
         nick: '',
         pwd: '',
         errorMsg: '',
-        serverError: ''
+        showServerError:false
     }
 
     componentDidMount (){
@@ -39,27 +39,14 @@ class Register extends React.Component{
         }, 2000);
     }
 
-    showServerError = (msg) => {
-        this.setState({
-            serverError: this.props.msg
-        })
+   
 
-        setTimeout(() => {
-            this.setState({
-                serverError: ''
-            })
-        }, 2000);
-    }
 
 
     handleRegister = () => {
         const reg = /^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$/;
         if(!reg.test(this.state.user)){
             this.showError('用户名格式错误');
-        }
-        console.log(this.props.msg)
-        if(this.props.msg) {
-            this.showServerError(this.props.msg)
         }
         const {user,nick,pwd} = this.state
         this.props.regisger({user,nick,pwd});
@@ -69,7 +56,20 @@ class Register extends React.Component{
         this.props.history.push('/login')
     }
 
+    componentWillReceiveProps(nextProps){
+        console.log('快更新啊')
+        this.setState({
+            showServerError:true
+        })
+        setTimeout(() => {
+            this.setState({
+                showServerError:false
+            })
+        }, 2000);
+    }
+
     render() {
+        console.log(this.props.msg)
         return (
             <div className="mask">
                 <div className="wrapper">
@@ -108,7 +108,7 @@ class Register extends React.Component{
                     <a className="textArea" onClick={
                         this.handleClickLogin
                     }>去登陆</a>
-                    <div className="serverError">{this.state.serverError}</div>
+                    <div className="serverError">{this.state.showServerError ? this.props.msg : ''}</div>
                 </div>
             </div>
         )

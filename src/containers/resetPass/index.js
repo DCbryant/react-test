@@ -40,7 +40,7 @@ class ResetPass extends React.Component{
                     <div className="errorTip">{this.state.errorMsg}</div>
                     <div>
                         <input 
-                            id="pwd"
+                            type="password"
                             onChange={e => this.handleChange('pwd',e.target.value)} 
                             placeholder="密码"
                         />
